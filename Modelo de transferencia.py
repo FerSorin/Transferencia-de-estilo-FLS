@@ -32,7 +32,7 @@ style_path = '../figs/violin.jpg'      # Aquí ponemos la ruta a la imagen de es
 
 #	Creamos dos secciones, unaa que cargará las imágenes proporcionadas
 #	y la otra que nos las mostrará
-In [4]:
+
 def load_img(path_to_img):
   max_dim = 512
   img = Image.open(path_to_img)
@@ -45,7 +45,6 @@ def load_img(path_to_img):
   # Establecemos una matriz de imágenes que tenga excatamente las mismas dimensiones que el batch
   img = np.expand_dims(img, axis=0)
   return img
-In [5]:
 def imshow(img, title=None):
     
   # Eliminamos la dimension del batch
@@ -197,7 +196,7 @@ def compute_loss(model, loss_weights, init_image, gram_style_features, content_f
 
   total_loss = all_loss[0]
   return tape.gradient(total_loss, cfg['init_image']), all_loss
-In [17]:
+
 import IPython.display
 
 def run_style_transfer(content_path, 
@@ -289,7 +288,7 @@ def run_style_transfer(content_path,
       
   return best_img, best_loss
 Visualizamos la imagen de contenido, la imagen de estilo y la imagen final.
-In [19]:
+
 def show_results(best_img, content_path, style_path, show_large_final=True):
   plt.figure(figsize=(10, 5))
   content = load_img(content_path) 
@@ -307,6 +306,5 @@ def show_results(best_img, content_path, style_path, show_large_final=True):
     plt.imshow(best_img)
     plt.title('Output Image')
     plt.show()
-In [20]:
 show_results(best, content_path, style_path)
 
